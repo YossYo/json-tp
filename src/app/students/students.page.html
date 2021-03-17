@@ -1,0 +1,46 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="home"></ion-back-button>
+        </ion-buttons>
+        <ion-title>students</ion-title>
+
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-margin">
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Fullname</th>
+                <th scope="col">Email</th>
+                <th scope="col">Country</th>
+                <th scope="col">Actions</th>
+                <th> <button type="button" class="btn btn-outline-primary" [routerLink]="['/add']">Add</button>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let student of studentsData; index as i">
+                <th scope="row">{{ i + 1 }}</th>
+                <td>{{ student.name }}</td>
+                <td>{{ student.email }}</td>
+                <td [ngStyle]="{'background-color':student.country === 'USA'  ? 'red' : 'blue'}">{{ student.country }}</td>
+                <td>
+
+                    <button type="button" class="btn btn-outline-success" routerLink='/update/{{student.id}}'>Edit</button>
+                    <button type="button" class="btn btn-outline-danger" style="margin: 2%;" (click)="delete(student)">Delete</button>
+
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+
+
+
+
+
+
+</ion-content>
